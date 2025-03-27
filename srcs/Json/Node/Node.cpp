@@ -4,8 +4,17 @@
 
 namespace Json
 {
+    Node &Node::operator[](const char *key)
+    { 
+        if (const void *ptr = std::get_if<void*>(this)) 
+            *this = NodeMap();
+        return std::get<NodeMap>(*this)[key]; 
+    }
+
     Node &Node::operator[](size_t index)
     {
+        if (const void *ptr = std::get_if<void*>(this)) 
+            *this = NodeArray();
         auto &array = std::get<NodeArray>(*this);
         if (array.size() <= index)
             array.resize(index + 1);

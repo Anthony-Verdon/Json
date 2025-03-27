@@ -11,7 +11,7 @@ TEST_CASE("Node")
     node["string"] = "Hello World !";
     node["boolean"] = false;
     node["NULL"] = nullptr;
-    node["array"] = Json::NodeArray();
+    node["array"] = {};
     for (int i = 0; i < 3; i++)
         node["array"][i] = i + 5;
     node["map"]["key1"] = "value1";

@@ -15,8 +15,8 @@ namespace Json
     {
         using variant::variant;
 
-        Node() { *this = NodeMap(); }
-        Node &operator[](const char *key) { return std::get<NodeMap>(*this)[key]; }
+        Node() { *this = nullptr; }
+        Node &operator[](const char *key);
         Node &operator[](int index) { return ((*this)[(size_t)index]); }
         Node &operator[](size_t index);
         operator int() const { return std::get<int>(*this); }
