@@ -14,8 +14,11 @@ namespace Json
     struct Node : std::variant<int, double, std::string, bool, void*, NodeArray, NodeMap> 
     {
         using variant::variant;
+
+        Node() { *this = NodeMap(); }
         Node &operator[](const char *key) { return std::get<NodeMap>(*this)[key]; }
-        Node &operator[](int index) { return std::get<NodeArray>(*this)[index]; }
+        Node &operator[](int index) { return ((*this)[(size_t)index]); }
+        Node &operator[](size_t index);
         operator int() const { return std::get<int>(*this); }
         operator size_t() const { return static_cast<size_t>(std::get<int>(*this)); }
         operator double() const { return std::get<double>(*this); }

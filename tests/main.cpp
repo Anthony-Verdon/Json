@@ -4,16 +4,18 @@
 
 TEST_CASE("Node")
 {
-    Json::Node node = Json::NodeMap();
-    node["number"] = Json::NodeMap();
+    Json::Node node;
     node["number"]["int"] = 1;
     node["number"]["float"] = 2.0f;
     node["number"]["double"] = 3.0;
     node["string"] = "Hello World !";
     node["boolean"] = false;
     node["NULL"] = nullptr;
-    node["array"] = Json::NodeArray({1, "here", false});
-    node["map"] = Json::NodeMap({{"key1", "value1"},{"key2", "value2"}});
+    node["array"] = Json::NodeArray();
+    for (int i = 0; i < 3; i++)
+        node["array"][i] = i + 5;
+    node["map"]["key1"] = "value1";
+    node["map"]["key2"] = 2;
     std::cout << node << std::endl;
 }
 

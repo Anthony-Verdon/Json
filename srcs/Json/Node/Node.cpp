@@ -4,6 +4,14 @@
 
 namespace Json
 {
+    Node &Node::operator[](size_t index)
+    {
+        auto &array = std::get<NodeArray>(*this);
+        if (array.size() <= index)
+            array.resize(index + 1);
+        return array[index];
+    } 
+
     Node::operator float() const
     {
         if (const int *ptr = std::get_if<int>(this)) 
