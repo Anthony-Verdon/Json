@@ -57,6 +57,7 @@ bool Node::operator==(const int value) const
 
     return false;
 }
+
 bool Node::operator==(const double value) const
 {
     if (const double *ptr = std::get_if<double>(this))
@@ -64,6 +65,7 @@ bool Node::operator==(const double value) const
 
     return false;
 }
+
 bool Node::operator==(const std::string value) const
 {
     if (const std::string *ptr = std::get_if<std::string>(this))
@@ -71,6 +73,7 @@ bool Node::operator==(const std::string value) const
 
     return false;
 }
+
 bool Node::operator==(const bool value) const
 {
     if (const bool *ptr = std::get_if<bool>(this))
@@ -95,6 +98,7 @@ bool Node::operator==(const NodeArray value) const
 
     return false;
 }
+
 bool Node::operator==(const NodeMap value) const
 {
     if (const NodeMap *ptr = std::get_if<NodeMap>(this))
@@ -102,6 +106,7 @@ bool Node::operator==(const NodeMap value) const
 
     return false;
 }
+
 const Node &Node::Iterator::operator*()
 {
     if (const ArrayIt *ptr = std::get_if<ArrayIt>(&it))
